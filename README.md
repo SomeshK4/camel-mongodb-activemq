@@ -11,13 +11,19 @@ Apache Camel is an open source framework for message-oriented middleware with a 
 
 ## Steps to run the application
 
-_Step 1:_ Create collection in mongodb and insert some data in the collection 
+_Step 1:_ From root directory of project run the command
 
-_Step 2:_ Replace the name of collection in the MessagesRouter.java file
+```
+docker-compose up -d
+```
+
+_Step 2:_ Create collection in mongodb by using mongodb express(running as a docker container) and insert some data in the collection 
+
+_Step 3:_ Replace the name of collection in the MessagesRouter.java file
 ```
      .to("mongodb:mongoClient?database=rtp&authSource=admin&collection=rtp_outbox_t&operation=findAll")
 ```
 
-_Step 3:_ Start Activmq-artemis either on Docker or local system
+_Step 4:_ Start Activmq-artemis either on Docker or local system
 
-_Step 4:_ Start the application and you will see that data from mongodb will be published to queue in Activemq-artemis
+_Step 5:_ Start the application and you will see that data from mongodb will be published to queue in Activemq-artemis
